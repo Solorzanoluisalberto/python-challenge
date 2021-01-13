@@ -1,5 +1,3 @@
-# main PyBank file
-# dataset is composed of two columns: "Date" and "Profit/Losses"
 import csv
 from numpy import mean
 import statistics
@@ -21,8 +19,7 @@ average1 = round(sum(listasuma)/len(listasuma),2) # average from list value
 print(" Financial Analysis ")
 print(" --------------------- ")
 print('Total Months: ', count)
-#moneda = "${:,.2f}".format(suma)
-print('Total:', ("${:}".format(suma))) # ("${:,.2f}".format(suma)))
+print('Total:', ("${:}".format(suma))) # Moneda = "${:,.2f}".format(suma)
 print("Average Change: ", ("${:2}".format(round((listasuma[-1]-listasuma[0])/(len(listasuma)-1),2)))) # print average change 
 minimoindex = min(listasuma) # minimum value in the data set
 maximoindex = max(listasuma) # maximum value in the data set
@@ -30,5 +27,18 @@ minimoindex = listasuma.index(minimoindex) # index of the minimum value in the d
 maximoindex = listasuma.index(maximoindex) # index of the maximum value in the data set
 print("Greatest Increase in Profits: ", listavalor[maximoindex] , "(","${:2}".format(max(listasuma)),")") # print greates value
 print("Greatest Decrease in Profits: ", listavalor[minimoindex] , "(","${:2}".format(min(listasuma)),")") # print minimun value
-#avera = mean(listasuma)  # average from list value
 
+PyBanktxt = open("Analysis/PyBank_Results.txt","w")  
+Greatest_Increase = "Greatest Increase in Profits: " + listavalor[maximoindex] + " (" + "${:2}".format(max(listasuma)) + ")" + "\n"
+Greatest_Decrease = "Greatest Decrease in Profits: " + listavalor[minimoindex] + " (" + "${:2}".format(min(listasuma)) + ")" + "\n"
+#print(Greatest_Increase)
+#print(Greatest_Decrease)
+# \n is placed to indicate EOL (End of Line) 
+PyBanktxt.write("Financial Analysis \n")
+PyBanktxt.write("--------------------- \n")
+PyBanktxt.write("Total Months: " + str(count) + " \n")
+PyBanktxt.write("Total:" + str(("${:}".format(suma))) + " \n")
+PyBanktxt.write("Average Change: " + str(("${:2}".format(round((listasuma[-1]-listasuma[0])/(len(listasuma)-1),2)))) + " \n")
+PyBanktxt.write(Greatest_Increase)
+PyBanktxt.write(Greatest_Decrease)
+PyBanktxt.close() 
