@@ -19,15 +19,9 @@ def Count_Candidate_votes(Candidatos): #Function that counts the votes for each 
     Percent_votes = "{:.3%}".format(Vote_count / len(Votes_cast)) # ("${:}".format((Vote_count / len(Votes_cast))*100)
     Cadena = Candidatos + ':  ' + str(Percent_votes) + ' (' + str(Vote_count) +')'
     Votes_x_candidates[Unique_Candidate.index(Candidatos)] = Vote_count
-    #print(Votes_x_candidates)
-    #print(Unique_Candidate)
     return(Cadena)
 
 def Results_Screen_output(Election_results, Winner_Name, Total_Votes): #== function that prints data on screen
-    #winner_index = Votes_x_candidates.index(max(Votes_x_candidates))
-    #Winner_Name = Unique_Candidate[winner_index]
-    #Winner_total_votes = Votes_x_candidates[winner_index]
-    #Total_Votes = len(Votes_cast)
     print("Election Results")
     print("-------------------------")
     print("Total Votes:  " + str(Total_Votes))
@@ -39,7 +33,7 @@ def Results_Screen_output(Election_results, Winner_Name, Total_Votes): #== funct
     print("-------------------------")
 
 def Results_txt_output(Election_results, Winner_Name, Total_Votes):
-    PyPoll_txt = open("Analysis/PyPoll_Results1.txt","w")  # I create file to write the following content
+    PyPoll_txt = open("Analysis/PyPoll_Results.txt","w")  # I create file to write the following content
     PyPoll_txt.write("Election Results \n")
     PyPoll_txt.write("-------------------------\n")
     PyPoll_txt.write("Total Votes:  " + str(Total_Votes) + " \n")
@@ -50,9 +44,8 @@ def Results_txt_output(Election_results, Winner_Name, Total_Votes):
     PyPoll_txt.write("Winner:  " + Winner_Name + " \n")
     PyPoll_txt.write("-------------------------\n")
 
-#Vote_count = 0
 # main program open file and operate
-with open('Resources/election_data1.csv') as file:
+with open('Resources/election_data.csv') as file:
     data_reader = csv.DictReader(file, delimiter=',')
     for row in data_reader:
         Votes_cast.append(int(row['Voter ID'])) # assign value to a list
