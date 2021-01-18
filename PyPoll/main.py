@@ -39,7 +39,7 @@ def Results_Screen_output(Election_results, Winner_Name, Total_Votes): #== funct
     print("-------------------------")
 
 def Results_txt_output(Election_results, Winner_Name, Total_Votes):
-    PyPoll_txt = open("Analysis/PyPoll_Results.txt","w")  # I create file to write the following content
+    PyPoll_txt = open("Analysis/PyPoll_Results1.txt","w")  # I create file to write the following content
     PyPoll_txt.write("Election Results \n")
     PyPoll_txt.write("-------------------------\n")
     PyPoll_txt.write("Total Votes:  " + str(Total_Votes) + " \n")
@@ -55,7 +55,6 @@ def Results_txt_output(Election_results, Winner_Name, Total_Votes):
 with open('Resources/election_data1.csv') as file:
     data_reader = csv.DictReader(file, delimiter=',')
     for row in data_reader:
-    # suma = suma + int(row['Profit/Losses'])
         Votes_cast.append(int(row['Voter ID'])) # assign value to a list
         County.append(row['County']) # assign value to a list
         Candidate.append(row['Candidate']) # assign value to a list
@@ -64,12 +63,9 @@ Unique_Candidate = list(set(Candidate)) # convert set in to a list of values
 Votes_x_candidates = list(set(Candidate)) #list(set(Candidate))
 
 for Aspirant in Unique_Candidate: # do for each Aspirant in a list Unique_Candidate
-    #print(Aspirant)
     Result = Count_Candidate_votes(Aspirant)
     Election_results.append(Result)
-    #print(res)
 print(Votes_x_candidates)
-#print(max(Votes_x_candidates))
 Winner_index = Votes_x_candidates.index(max(Votes_x_candidates))
 winner_Name = Unique_Candidate[Winner_index]
 Total_Votes = len(Votes_cast)
