@@ -76,5 +76,3 @@ Total_Votes = len(Votes_cast)
 print(winner_Name)
 Results_Screen_output(Election_results, winner_Name, Total_Votes) # calling subroutine to print to screen
 Results_txt_output(Election_results, winner_Name, Total_Votes) # calling subroutine to print to txt file
-
-
